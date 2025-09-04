@@ -45,8 +45,3 @@ Always eager to learn new technologies and work on challenging projects. 🚀
 </p>
 
 ---
-
-## 🐍 Contribution Snake
-<p align="center">
- <img src="https://github.com/issambouhchych/issambouhchych/blob/output/github-contribution-grid-snake.svg" alt="snake animation"/>
-</p>
