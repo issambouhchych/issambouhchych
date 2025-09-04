@@ -1,0 +1,38 @@
+name: Generate Snake Animation
+
+on:
+  schedule:
+    - cron: "0 0 * * *" # يشغل يومياً
+  workflow_dispatch: # لتشغيل يدوي
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      # 1️⃣ استنساخ المستودع
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # 2️⃣ توليد Snake
+      - name: Generate Snake
+        uses: Platane/snk@v3
+        with:
+          github_user_name: issambouhchych
+          outputs: dist/github-contribution-grid-snake.svg
+
+      # 3️⃣ التحقق من المجلد والملف (اختياري)
+      - name: List dist folder
+        run: ls -la dist
+
+      # 4️⃣ دفع الملف مباشرة على main
+      - name: Push changes
+        uses: EndBug/add-and-commit@v9
+        with:
+          message: "Generated Snake"
+          add: "dist/github-contribution-grid-snake.svg"
+          author_name: "github-actions"
+          author_email: "github-actions@github.com"
+          github_token: ${{ secrets.GITHUB_TOKEN }}
