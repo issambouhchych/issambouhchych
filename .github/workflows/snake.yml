@@ -2,7 +2,7 @@ name: Generate Snake Animation
 
 on:
   schedule:
-    - cron: "0 0 * * *" # يشغل يومياً
+    - cron: "0 0 * * *" # يومياً منتصف الليل
   workflow_dispatch: # لتشغيل يدوي
   push:
     branches:
@@ -23,11 +23,11 @@ jobs:
           github_user_name: issambouhchych
           outputs: dist/github-contribution-grid-snake.svg
 
-      # 3️⃣ التحقق من المجلد والملف (اختياري)
+      # 3️⃣ التحقق من وجود الملف (اختياري)
       - name: List dist folder
         run: ls -la dist
 
-      # 4️⃣ دفع الملف مباشرة على main
+      # 4️⃣ دفع الملف مباشرة على main باستخدام GITHUB_TOKEN
       - name: Push changes
         uses: EndBug/add-and-commit@v9
         with:
